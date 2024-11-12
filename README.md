@@ -7,7 +7,6 @@
 #Context and justification: The choice of this project stems from its relevance to a wide array of programming concepts that will be discussed in class, such as OOP and C++ knowledge. Designing a bank account system requires an understanding of data handling, user interface design, and other essential skills in computer science and software development.
 
 
-CLASS DIAGRAM LINK:
-https://github.com/user-attachments/assets/02fc2be4-044d-48ab-812f-cce17d07e4cc
+![Diagrama de clases]()
 
 
