@@ -1,6 +1,7 @@
 #ifndef INVESTMENTACCOUNT_H
 #define INVESTMENTACCOUNT_H
 
+#include <string>
 #include "BankAccount.h"
 
 class InvestmentAccount : public BankAccount {
@@ -10,13 +11,20 @@ private:
     double growthRate;
 
 public:
-    InvestmentAccount(int number, double bal, std::string owner, std::string type,
-                      double mainBal, double investBal, double rate);
+    InvestmentAccount(double mainBal, double investBal, double growth);
+
+    double getMainBalance() const;
+    double getInvestmentBalance() const;
+    double getGrowthRate() const;
+
+    void setMainBalance(double mainBal);
+    void setInvestmentBalance(double investBal);
+    void setGrowthRate(double growth);
 
     void applyGrowth();
-    void transferToInvestment(double amount);
-    void withdrawFromInvestment(double amount);
-    void displaySummary();
+    void transferToInvestment(double amount); 
+    void withdrawFromInvestment(double amount); 
+    std::string displaySummary() const; 
 };
 
-#endif 
+#endif // INVESTMENTACCOUNT_H
