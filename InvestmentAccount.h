@@ -11,7 +11,8 @@ private:
     double growthRate;
 
 public:
-    InvestmentAccount(double mainBal, double investBal, double growth);
+    InvestmentAccount(const std::string& accNum, double mainBal, double investBal, double growth, 
+                      const std::string& owner, const std::string& type);
 
     double getMainBalance() const;
     double getInvestmentBalance() const;
