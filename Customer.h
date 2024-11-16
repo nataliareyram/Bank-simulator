@@ -19,6 +19,8 @@ public:
     void setCustomerID(const std::string& customerID);
     void setName(const std::string& name);
     void setPhoneNumber(int phoneNumber);
+
+    void displayCustomerInfo() const;
 };
 
 #endif // CUSTOMER_H
