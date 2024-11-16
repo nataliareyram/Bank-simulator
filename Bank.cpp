@@ -1,5 +1,7 @@
 #include "Bank.h"
-#include <iostream> 
+#include "Customer.h" 
+#include <iostream>
+#include <vector>
 
 Bank::Bank(const std::string& name, const std::string& loc)
     : bankName(name), location(loc) {}
@@ -27,20 +29,20 @@ void Bank::addCustomer(const Customer& customer) {
 void Bank::removeCustomer(const std::string& customerID) {
     for (size_t i = 0; i < customers.size(); ++i) {
         if (customers[i].getCustomerID() == customerID) {
-            customers.erase(customers.begin() + i);
+            customers.erase(customers.begin() + i); 
+            std::cout << "Customer with ID " << customerID << " removed." << std::endl;
             return; 
         }
     }
+    std::cout << "Customer with ID " << customerID << " not found!" << std::endl;
 }
 
 Customer Bank::getCustomerInfo(const std::string& customerID) const {
     for (const auto& customer : customers) {
         if (customer.getCustomerID() == customerID) {
-            return customer;
+            return customer; 
         }
     }
-
     std::cout << "Customer not found! Try again." << std::endl;
-
-    return Customer("", "", 0);
+    return Customer("", "", 0); 
 }
