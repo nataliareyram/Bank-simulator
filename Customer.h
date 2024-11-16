@@ -10,10 +10,15 @@ private:
     int phoneNumber;
 
 public:
-    Customer(std::string id, std::string name, int phone);
+    Customer(const std::string& customerID, const std::string& name, int phoneNumber);
 
-    void displayCustomerInfo();
-    double getTotalBalance();
+    std::string getCustomerID() const;
+    std::string getName() const;
+    int getPhoneNumber() const;
+
+    void setCustomerID(const std::string& customerID);
+    void setName(const std::string& name);
+    void setPhoneNumber(int phoneNumber);
 };
 
-#endif 
+#endif // CUSTOMER_H
