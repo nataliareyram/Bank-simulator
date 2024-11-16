@@ -25,7 +25,12 @@ public:
 
     void deposit(double amount);
     void withdraw(double amount);
+
     std::string displayAccountInfo() const;
+
+    bool transfer(BankAccount& toAccount, double amount); 
+    bool hasSufficientFunds(double amount) const;      
+    void applyInterest(double interestRate);    
 };
 
 #endif // BANKACCOUNT_H
