@@ -1,8 +1,10 @@
 #include "InvestmentAccount.h"
 #include <iostream>
 
-InvestmentAccount::InvestmentAccount(double mainBal, double investBal, double growth)
-    : mainBalance(mainBal), investmentBalance(investBal), growthRate(growth) {}
+InvestmentAccount::InvestmentAccount(const std::string& accNum, double mainBal, double investBal, double growth, 
+                                     const std::string& owner, const std::string& type)
+    : BankAccount(accNum, mainBal + investBal, owner, type), 
+      mainBalance(mainBal), investmentBalance(investBal), growthRate(growth) {}
 
 double InvestmentAccount::getMainBalance() const {
     return mainBalance;
