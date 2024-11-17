@@ -24,6 +24,7 @@ void Bank::setLocation(const std::string& loc) {
 
 void Bank::addCustomer(const Customer& customer) {
     customers.push_back(customer);
+    std::cout << "Customer " << customer.getName() << " added successfully." << std::endl;
 }
 
 void Bank::removeCustomer(const std::string& customerID) {
@@ -43,6 +44,5 @@ Customer Bank::getCustomerInfo(const std::string& customerID) const {
             return customer; 
         }
     }
-    std::cout << "Customer not found! Try again." << std::endl;
-    return Customer("", "", 0); 
+    throw std::runtime_error("Customer with ID " + customerID + " not found!"); 
 }
