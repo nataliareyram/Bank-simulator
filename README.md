@@ -9,3 +9,59 @@
 
 ![Diagrama de clases](Class%20diagram.drawio_.drawio.png)
 
+CLASS LIST:
+- Bank:
+    - bankName       
+    - location       
+    - customers
+    + getBankName()  
+    + getLocation()  
+    + setBankName()  
+    + setLocation()  
+    + addCustomer()  
+    + removeCustomer()
+    + getCustomerInfo()
+- Customer
+     - name       
+     - customerID     
+     - age
+     + getName()       
+     + getCustomerID() 
+     + getAge()        
+     + setName()       
+     + setCustomerID() 
+     + setAge()
+
+-Bank Account
+    - accountNumber       
+    - balance             
+    - ownerName           
+    - accountType         
+    + getAccountNumber()  
+    + getBalance()        
+    + getOwnerName()      
+    + getAccountType()    
+    + deposit()           
+    + withdraw()          
+    + displayAccountInfo()
+
+-Investment Account
+    - mainBalance             
+    - investmentBalance       
+    - growthRate              
+    + getMainBalance()        
+    + getInvestmentBalance()  
+    + getGrowthRate()         
+    + applyGrowth()           
+    + transferToInvestment()  
+    + withdrawFromInvestment()
+    + displaySummary() 
+
+-Card
+     - credit   
+     - debit    
+     + getCredit() 
+     + getDebit()  
+     + getCardType()
+     + setCredit()  
+     + setDebit() 
