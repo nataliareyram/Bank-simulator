@@ -1,7 +1,5 @@
 #include "Bank.h"
-#include "Customer.h" 
 #include <iostream>
-#include <vector>
 
 Bank::Bank(const std::string& name, const std::string& loc)
     : bankName(name), location(loc) {}
@@ -45,4 +43,14 @@ Customer Bank::getCustomerInfo(const std::string& customerID) const {
         }
     }
     throw std::runtime_error("Customer with ID " + customerID + " not found!"); 
+}
+
+void Bank::addBankAccount(BankAccount* bankAccount) {
+    bankAccounts.push_back(bankAccount);
+    std::cout << "Bank account added successfully." << std::endl;
+}
+
+void Bank::addInvestmentAccount(InvestmentAccount* investmentAccount) {
+    investmentAccounts.push_back(investmentAccount);
+    std::cout << "Investment account added successfully." << std::endl;
 }
