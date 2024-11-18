@@ -11,7 +11,7 @@
 
 CLASS LIST:
 - Bank:
-    - bankName       
+-   - bankName       
     - location       
     - customers
     + getBankName()  
@@ -22,7 +22,7 @@ CLASS LIST:
     + removeCustomer()
     + getCustomerInfo()
 - Customer
-     - name       
+-    - name       
      - customerID     
      - age
      + getName()       
@@ -31,9 +31,8 @@ CLASS LIST:
      + setName()       
      + setCustomerID() 
      + setAge()
-
--Bank Account
-    - accountNumber       
+- Bank Account
+-   - accountNumber       
     - balance             
     - ownerName           
     - accountType         
@@ -44,9 +43,8 @@ CLASS LIST:
     + deposit()           
     + withdraw()          
     + displayAccountInfo()
-
--Investment Account
-    - mainBalance             
+- Investment Account
+-   - mainBalance             
     - investmentBalance       
     - growthRate              
     + getMainBalance()        
@@ -56,12 +54,13 @@ CLASS LIST:
     + transferToInvestment()  
     + withdrawFromInvestment()
     + displaySummary() 
-
--Card
-     - credit   
+- Card
+-    - credit   
      - debit    
      + getCredit() 
      + getDebit()  
      + getCardType()
      + setCredit()  
-     + setDebit() 
+     + setDebit()           
+    
+     
