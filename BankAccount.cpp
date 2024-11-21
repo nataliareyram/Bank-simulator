@@ -14,60 +14,57 @@ void BankAccount::setBalance(double bal) { balance = bal; }
 void BankAccount::setOwnerName(const std::string& owner) { ownerName = owner; }
 void BankAccount::setAccountType(const std::string& type) { accountType = type; }
 
-void BankAccount::deposit(double amount) {
+std::string BankAccount::deposit(double amount) {
     if (amount > 0) {
         balance += amount;
-        std::cout << "Deposited: " << amount << ". New Balance: " << balance << std::endl;
-    } else {
-        std::cout << "Invalid deposit amount!" << std::endl;
+        return "Deposited: " + std::to_string(amount) + ". New Balance: " + std::to_string(balance);
     }
+    return "Invalid deposit amount!";
 }
 
-void BankAccount::withdraw(double amount) {
+std::string BankAccount::withdraw(double amount) {
     if (amount <= 0) {
-        std::cout << "Invalid withdrawal amount!" << std::endl;
+        return "Invalid withdrawal amount!";
     } else if (amount > balance) {
-        std::cout << "Insufficient funds!" << std::endl;
-    } else {
-        balance -= amount;
-        std::cout << "Withdrew: " << amount << ". New Balance: " << balance << std::endl;
+        return "Insufficient funds!";
     }
+
+    balance -= amount;
+    return "Withdrew: " + std::to_string(amount) + ". New Balance: " + std::to_string(balance);
 }
 
 std::string BankAccount::displayAccountInfo() const {
-    return "Account Number: " + accountNumber + "\n" +
-           "Owner Name: " + ownerName + "\n" +
-           "Account Type: " + accountType + "\n" +
-           "Balance: " + std::to_string(balance);
+    std::ostringstream oss;
+    oss << "Account Number: " << accountNumber << "\n"
+        << "Owner Name: " << ownerName << "\n"
+        << "Account Type: " << accountType << "\n"
+        << "Balance: " << balance;
+    return oss.str();
 }
 
-bool BankAccount::transfer(BankAccount& toAccount, double amount) {
+std::string BankAccount::transfer(BankAccount& toAccount, double amount) {
     if (amount <= 0) {
-        std::cout << "Invalid transfer amount!" << std::endl;
-        return false;
+        return "Invalid transfer amount!";
     }
 
     if (amount > balance) {
-        std::cout << "Insufficient funds for transfer!" << std::endl;
-        return false;
+        return "Insufficient funds for transfer!";
     }
 
     withdraw(amount);
     toAccount.deposit(amount);
-    std::cout << "Transferred: " << amount << " to Account " << toAccount.getAccountNumber() << std::endl;
-    return true;
+    return "Transferred: " + std::to_string(amount) + " to Account " + toAccount.getAccountNumber();
 }
 
 bool BankAccount::hasSufficientFunds(double amount) const {
     return amount > 0 && amount <= balance;
 }
 
-void BankAccount::applyInterest(double interestRate) {
+std::string BankAccount::applyInterest(double interestRate) {
     if (interestRate > 0) {
         double interest = balance * interestRate / 100;
         balance += interest;
-        std::cout << "Interest applied: " << interest << ". New Balance: " << balance << std::endl;
-    } else {
-        std::cout << "Invalid interest rate!" << std::endl;
+        return "Interest applied: " + std::to_string(interest) + ". New Balance: " + std::to_string(balance);
     }
+    return "Invalid interest rate!";
 }
