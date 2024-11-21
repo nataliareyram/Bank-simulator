@@ -32,8 +32,10 @@ void Card::setDebit(const std::string& debitCard) {
     debit = debitCard;
 }
 
-void Card::displayCardInfo() const {
-    std::cout << "Credit Card: " << (credit.empty() ? "Not assigned" : credit) << std::endl;
-    std::cout << "Debit Card: " << (debit.empty() ? "Not assigned" : debit) << std::endl;
-    std::cout << "Card Type: " << getCardType() << std::endl;
+std::string Card::displayCardInfo() const {
+    std::ostringstream oss;
+    oss << "Credit Card: " << (credit.empty() ? "Not assigned" : credit) << "\n"
+        << "Debit Card: " << (debit.empty() ? "Not assigned" : debit) << "\n"
+        << "Card Type: " << getCardType();
+    return oss.str();
 }
