@@ -22,18 +22,17 @@ void Bank::setLocation(const std::string& loc) {
 
 void Bank::addCustomer(const Customer& customer) {
     customers.push_back(customer);
-    std::cout << "Customer " << customer.getName() << " added successfully." << std::endl;
+    return "Customer " + customer.getName() + " added successfully.";
 }
 
 void Bank::removeCustomer(const std::string& customerID) {
     for (size_t i = 0; i < customers.size(); ++i) {
         if (customers[i].getCustomerID() == customerID) {
             customers.erase(customers.begin() + i); 
-            std::cout << "Customer with ID " << customerID << " removed." << std::endl;
-            return; 
+            return "Customer with ID " + customerID + " removed.";
         }
     }
-    std::cout << "Customer with ID " << customerID << " not found!" << std::endl;
+    return "Customer with ID " + customerID + " not found!";
 }
 
 Customer Bank::getCustomerInfo(const std::string& customerID) const {
@@ -47,10 +46,10 @@ Customer Bank::getCustomerInfo(const std::string& customerID) const {
 
 void Bank::addBankAccount(BankAccount* bankAccount) {
     bankAccounts.push_back(bankAccount);
-    std::cout << "Bank account added successfully." << std::endl;
+    return "Bank account added successfully.";
 }
 
 void Bank::addInvestmentAccount(InvestmentAccount* investmentAccount) {
     investmentAccounts.push_back(investmentAccount);
-    std::cout << "Investment account added successfully." << std::endl;
+    return "Investment account added successfully.";
 }
