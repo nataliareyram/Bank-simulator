@@ -1,24 +1,23 @@
 #include "Customer.h"
 
-Customer::Customer(const std::string& customerID, const std::string& name, int phoneNumber,
-                   const BankAccount& bankAcc, const InvestmentAccount& investAcc, const Card& cardType)
-    : customerID(customerID), name(name), phoneNumber(phoneNumber),
-      bankAcc(bankAcc), investAcc(investAcc), cardType(cardType) {}
+Customer::Customer(std::string customerID, std::string name, int phoneNumber, 
+                   BankAccount bankAcc, InvestmentAccount investAcc, Card cardType)
+    : customerID(customerID), name(name), phoneNumber(phoneNumber), bankAcc(bankAcc), investAcc(investAcc), cardType(cardType) {}
 
 std::string Customer::getCustomerID() const {
     return customerID;
 }
 
-void Customer::setCustomerID(const std::string& customerID) {
-    this->customerID = customerID;
+void Customer::setCustomerID(std::string customerID) {
+    customerID = customerID;
 }
 
 std::string Customer::getName() const {
     return name;
 }
 
-void Customer::setName(const std::string& name) {
-    this->name = name;
+void Customer::setName(std::string name) {
+    name = name;
 }
 
 int Customer::getPhoneNumber() const {
@@ -26,17 +25,29 @@ int Customer::getPhoneNumber() const {
 }
 
 void Customer::setPhoneNumber(int phoneNumber) {
-    this->phoneNumber = phoneNumber;
+    phoneNumber = phoneNumber;
 }
 
-void Customer::setBankAccount(const BankAccount& bankAcc) {
-    this->bankAcc = bankAcc;
+BankAccount Customer::getBankAccount() const {
+    return bankAcc;
 }
 
-void Customer::setInvestmentAccount(const InvestmentAccount& investAcc) {
-    this->investAcc = investAcc;
+void Customer::setBankAccount(BankAccount bankAcc) {
+    bankAcc = bankAcc;
 }
 
-void Customer::setCard(const Card& card) {
-    this->cardType = card;
+InvestmentAccount Customer::getInvestmentAccount() const {
+    return investAcc;
+}
+
+void Customer::setInvestmentAccount(InvestmentAccount investAcc) {
+    investAcc = investAcc;
+}
+
+Card Customer::getCard() const {
+    return cardType;
+}
+
+void Customer::setCard(Card cardType) {
+    cardType = cardType;
 }
