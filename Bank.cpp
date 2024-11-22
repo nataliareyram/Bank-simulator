@@ -1,5 +1,5 @@
 #include "Bank.h"
-#include <iostream>
+#include <stdexcept>
 
 Bank::Bank(const std::string& name, const std::string& loc)
     : bankName(name), location(loc) {}
@@ -22,34 +22,31 @@ void Bank::setLocation(const std::string& loc) {
 
 void Bank::addCustomer(const Customer& customer) {
     customers.push_back(customer);
-    return "Customer " + customer.getName() + " added successfully.";
 }
 
 void Bank::removeCustomer(const std::string& customerID) {
     for (size_t i = 0; i < customers.size(); ++i) {
         if (customers[i].getCustomerID() == customerID) {
-            customers.erase(customers.begin() + i); 
-            return "Customer with ID " + customerID + " removed.";
+            customers.erase(customers.begin() + i);
+            return; 
         }
     }
-    return "Customer with ID " + customerID + " not found!";
+    throw std::runtime_error("Customer with ID " + customerID + " not found!");
 }
 
 Customer Bank::getCustomerInfo(const std::string& customerID) const {
     for (const auto& customer : customers) {
         if (customer.getCustomerID() == customerID) {
-            return customer; 
+            return customer;
         }
     }
-    throw std::runtime_error("Customer with ID " + customerID + " not found!"); 
+    throw std::runtime_error("Customer with ID " + customerID + " not found!");
 }
 
-void Bank::addBankAccount(BankAccount* bankAccount) {
+void Bank::addBankAccount(const BankAccount& bankAccount) {
     bankAccounts.push_back(bankAccount);
-    return "Bank account added successfully.";
 }
 
-void Bank::addInvestmentAccount(InvestmentAccount* investmentAccount) {
+void Bank::addInvestmentAccount(const InvestmentAccount& investmentAccount) {
     investmentAccounts.push_back(investmentAccount);
-    return "Investment account added successfully.";
 }
