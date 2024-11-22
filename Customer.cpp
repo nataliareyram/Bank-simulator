@@ -1,35 +1,42 @@
 #include "Customer.h"
-#include <iostream>
 
-Customer::Customer(const std::string& id, const std::string& customerName, int phone)
-    : customerID(id), name(customerName), phoneNumber(phone) {}
+Customer::Customer(const std::string& customerID, const std::string& name, int phoneNumber,
+                   const BankAccount& bankAcc, const InvestmentAccount& investAcc, const Card& cardType)
+    : customerID(customerID), name(name), phoneNumber(phoneNumber),
+      bankAcc(bankAcc), investAcc(investAcc), cardType(cardType) {}
 
 std::string Customer::getCustomerID() const {
     return customerID;
+}
+
+void Customer::setCustomerID(const std::string& customerID) {
+    this->customerID = customerID;
 }
 
 std::string Customer::getName() const {
     return name;
 }
 
+void Customer::setName(const std::string& name) {
+    this->name = name;
+}
+
 int Customer::getPhoneNumber() const {
     return phoneNumber;
 }
 
-void Customer::setCustomerID(const std::string& id) {
-    customerID = id;
+void Customer::setPhoneNumber(int phoneNumber) {
+    this->phoneNumber = phoneNumber;
 }
 
-void Customer::setName(const std::string& customerName) {
-    name = customerName;
+void Customer::setBankAccount(const BankAccount& bankAcc) {
+    this->bankAcc = bankAcc;
 }
 
-void Customer::setPhoneNumber(int phone) {
-    phoneNumber = phone;
+void Customer::setInvestmentAccount(const InvestmentAccount& investAcc) {
+    this->investAcc = investAcc;
 }
 
-void Customer::displayCustomerInfo() const {
-    std::cout << "Customer ID: " << customerID << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Phone Number: " << phoneNumber << std::endl;
+void Customer::setCard(const Card& card) {
+    this->cardType = card;
 }
