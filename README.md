@@ -7,20 +7,26 @@
 #Context and justification: The choice of this project stems from its relevance to a wide array of programming concepts that will be discussed in class, such as OOP and C++ knowledge. Designing a bank account system requires an understanding of data handling, user interface design, and other essential skills in computer science and software development.
 
 
-![Diagrama de clases](Class%20diagram.drawio_.drawio.png)
+![Diagrama de clases](Diagrama.drawio.png)
 
 CLASS LIST:
 - Bank:
--   - bankName       
-    - location       
-    - customers
-    + getBankName()  
-    + getLocation()  
-    + setBankName()  
-    + setLocation()  
-    + addCustomer()  
-    + removeCustomer()
-    + getCustomerInfo()
+-   -bankName: string
+-   -location: string
+-   - customers: List<Customer>
+-   + Bank(bankName: string, location: string)
+    + + getBankName(): string
+      + + setBankName(bankName: string): void 
+
++ getLocation(): string 
+
++ setLocation(location: string): void 
+
++ getCustomer(customerID: string): Customer 
+
++ addCustomer(customer: Customer): void 
+
++ removeCustomer(customerID: string): void
 - Customer
 -    - name       
      - customerID     
