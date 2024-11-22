@@ -9,25 +9,22 @@ class Bank {
 private:
     std::string bankName;
     std::string location;
-    std::vector<Customer> customers; 
-
+    std::vector<Customer> customers;
 public:
-    // These is the main constructor for the class.
-    Bank(const std::string& name, const std::string& loc);
+    // This is the main constructor for the class.
+    Bank(const std::string& bankName, const std::string& location);
 
-    // These are the getters for the Bank name and location.
+    // These are the coupled getters and setters for the attributes.
     std::string getBankName() const;
-    std::string getLocation() const;
+    void setBankName(const std::string& bankName);
 
-    // These are the setters for Bank name and location.
-    void setBankName(const std::string& name);
-    void setLocation(const std::string& loc);
+    std::string getLocation() const;
+    void setLocation(const std::string& location);
 
     // These additional methods help add, remove, or get the information of a customer.
+    Customer getCustomer(const std::string& customerID) const;
     void addCustomer(const Customer& customer);
     void removeCustomer(const std::string& customerID);
-    Customer getCustomer(const std::string& customerID) const;
 };
 
 #endif
-
