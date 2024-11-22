@@ -4,33 +4,29 @@
 #include <string>
 
 class BankAccount {
-protected:
+private:
     std::string accountNumber;
     double balance;
     std::string ownerName;
     std::string accountType;
 
 public:
-    BankAccount(const std::string& accNum, double bal, const std::string& owner, const std::string& type);
+    BankAccount(const std::string& accountNumber, double balance, const std::string& ownerName, const std::string& accountType);
 
     std::string getAccountNumber() const;
-    double getBalance() const;
-    std::string getOwnerName() const;
-    std::string getAccountType() const;
+    void setAccountNumber(const std::string& accountNumber);
 
-    void setAccountNumber(const std::string& accNum);
-    void setBalance(double bal);
-    void setOwnerName(const std::string& owner);
-    void setAccountType(const std::string& type);
+    double getBalance() const;
+    void setBalance(double balance);
+
+    std::string getOwnerName() const;
+    void setOwnerName(const std::string& ownerName);
+
+    std::string getAccountType() const;
+    void setAccountType(const std::string& accountType);
 
     void deposit(double amount);
     void withdraw(double amount);
-
-    std::string displayAccountInfo() const;
-
-    bool transfer(BankAccount& toAccount, double amount); 
-    bool hasSufficientFunds(double amount) const;      
-    void applyInterest(double interestRate);    
 };
 
 #endif // BANKACCOUNT_H
