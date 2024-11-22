@@ -1,14 +1,15 @@
 #include "BankAccount.h"
+#include <stdexcept>
 
-BankAccount::BankAccount(const std::string& accountNumber, double balance, const std::string& ownerName, const std::string& accountType)
+BankAccount::BankAccount(std::string accountNumber, double balance, std::string ownerName, std::string accountType)
     : accountNumber(accountNumber), balance(balance), ownerName(ownerName), accountType(accountType) {}
 
 std::string BankAccount::getAccountNumber() const {
     return accountNumber;
 }
 
-void BankAccount::setAccountNumber(const std::string& accountNumber) {
-    this->accountNumber = accountNumber;
+void BankAccount::setAccountNumber(std::string accountNumber) {
+    accountNumber = accountNumber;
 }
 
 double BankAccount::getBalance() const {
@@ -16,23 +17,23 @@ double BankAccount::getBalance() const {
 }
 
 void BankAccount::setBalance(double balance) {
-    this->balance = balance;
+    balance = balance;
 }
 
 std::string BankAccount::getOwnerName() const {
     return ownerName;
 }
 
-void BankAccount::setOwnerName(const std::string& ownerName) {
-    this->ownerName = ownerName;
+void BankAccount::setOwnerName(std::string ownerName) {
+    ownerName = ownerName;
 }
 
 std::string BankAccount::getAccountType() const {
     return accountType;
 }
 
-void BankAccount::setAccountType(const std::string& accountType) {
-    this->accountType = accountType;
+void BankAccount::setAccountType(std::string accountType) {
+    accountType = accountType;
 }
 
 void BankAccount::deposit(double amount) {
@@ -40,7 +41,9 @@ void BankAccount::deposit(double amount) {
 }
 
 void BankAccount::withdraw(double amount) {
-    if (amount <= balance) {
+    if (balance >= amount) {
         balance -= amount;
+    } else {
+        throw std::runtime_error("Insufficient funds");
     }
 }
