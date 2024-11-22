@@ -5,100 +5,100 @@
 #include "BankAccount.h"
 #include "InvestmentAccount.h"
 #include "Card.h"
-
+//main function definition with user interaction to define the initial values required to create the bank in which the transactions will be performed.
 int main() {
     std::string bankName, location;
-    std::cout << "=== Crear banco ===\n";
-    std::cout << "Ingrese el nombre del banco: ";
+    std::cout << "=== Create bank ===\n";
+    std::cout << "Enter the bank's name: ";
     std::getline(std::cin, bankName);
-    std::cout << "Ingrese la ubicación del banco: ";
+    std::cout << "Enter the bank's location: ";
     std::getline(std::cin, location);
 
-    // Crear banco
+    // The values given will be assigned to the Bank constructor.
     Bank bank(bankName, location);
 
-    // Crear cliente
+    // User interaction to obtain the Customer's information.
     std::string customerID, name;
     int phoneNumber;
-    std::cout << "\n=== Crear cliente ===\n";
-    std::cout << "Ingrese el ID del cliente: ";
+    std::cout << "\n=== Create a client ===\n";
+    std::cout << "Enter client ID: ";
     std::getline(std::cin, customerID);
-    std::cout << "Ingrese el nombre del cliente: ";
+    std::cout << "Enter client's name: ";
     std::getline(std::cin, name);
-    std::cout << "Ingrese el número de teléfono del cliente: ";
+    std::cout << "Enter client's phone number: ";
     std::cin >> phoneNumber;
-    std::cin.ignore(); // Limpiar el buffer de entrada
+    std::cin.ignore(); 
 
-    // Crear cuenta bancaria
+    // User interaction to create bank account.
     std::string accountNumber, accountType;
     double balance;
-    std::cout << "\n=== Crear cuenta bancaria ===\n";
-    std::cout << "Ingrese el número de cuenta: ";
+    std::cout << "\n=== Create a bank account ===\n";
+    std::cout << "Enter account number: ";
     std::getline(std::cin, accountNumber);
-    std::cout << "Ingrese el tipo de cuenta (Savings/Checking): ";
+    std::cout << "Enter account type (Savings/Checking): ";
     std::getline(std::cin, accountType);
-    std::cout << "Ingrese el saldo inicial: ";
+    std::cout << "Enter initial balance: ";
     std::cin >> balance;
 
     BankAccount bankAcc(accountNumber, balance, name, accountType);
 
-    // Crear cuenta de inversión
+    // User interaction to create investment account.
     std::string investmentAccountNumber;
     double investmentBalance, growthRate;
-    std::cout << "\n=== Crear cuenta de inversión ===\n";
-    std::cout << "Ingrese el número de cuenta de inversión: ";
+    std::cout << "\n=== Create an investment account ===\n";
+    std::cout << "Enter the investment account number: ";
     std::cin >> investmentAccountNumber;
-    std::cout << "Ingrese el saldo inicial de la cuenta de inversión: ";
+    std::cout << "Enter the investment account's initial balance: ";
     std::cin >> investmentBalance;
-    std::cout << "Ingrese la tasa de crecimiento (ej. 0.05 para 5%): ";
+    std::cout << "Enter the growth rate (ex. 0.05 for 5%): ";
     std::cin >> growthRate;
 
     InvestmentAccount investAcc(investmentAccountNumber, balance, name, "Investment", investmentBalance, growthRate);
 
-    // Crear tarjeta
+    // User interaction to create the card type.
     std::string creditCard, debitCard;
-    std::cin.ignore(); // Limpiar el buffer de entrada
-    std::cout << "\n=== Crear tarjeta ===\n";
-    std::cout << "Ingrese la tarjeta de crédito: ";
+    std::cin.ignore(); 
+    std::cout << "\n=== Create Card ===\n";
+    std::cout << "Enter your credit card (Visa, MasterCard, American Express, None): ";
     std::getline(std::cin, creditCard);
-    std::cout << "Ingrese la tarjeta de débito: ";
+    std::cout << "Enter your debit card (Visa, MasterCard, American Express, None): ";
     std::getline(std::cin, debitCard);
 
     Card card(creditCard, debitCard);
 
-    // Crear cliente
+    // Client creation using the Customer constructor
     Customer customer(customerID, name, phoneNumber, bankAcc, investAcc, card);
     bank.addCustomer(customer);
 
-    // Operaciones con el cliente
+    // Task menu
     int option;
     do {
-        std::cout << "\n=== Menú de operaciones ===\n";
-        std::cout << "1. Depositar en cuenta principal\n";
-        std::cout << "2. Retirar de cuenta principal\n";
-        std::cout << "3. Transferir a cuenta de inversión\n";
-        std::cout << "4. Aplicar crecimiento a inversión\n";
-        std::cout << "5. Ver detalles de cliente\n";
-        std::cout << "6. Salir\n";
-        std::cout << "Seleccione una opción: ";
+        std::cout << "\n=== Task menu ===\n";
+        std::cout << "1. Deposit to main account\n";
+        std::cout << "2. Withdraw from main account\n";
+        std::cout << "3. Transfer to Investment Account\n";
+        std::cout << "4. Apply Growth Rate to Investment Balance\n";
+        std::cout << "5. Get Client Information\n";
+        std::cout << "6. Leave\n";
+        std::cout << "Select an option: ";
         std::cin >> option;
 
         switch (option) {
             case 1: {
                 double depositAmount;
-                std::cout << "Ingrese la cantidad a depositar: ";
+                std::cout << "Enter the desired deposit amount: ";
                 std::cin >> depositAmount;
                 customer.getBankAccount().deposit(depositAmount);
-                std::cout << "Depósito exitoso. Nuevo saldo: $" << customer.getBankAccount().getBalance() << "\n";
+                std::cout << "Your deposit was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
                 break;
             }
             case 2: {
                 double withdrawAmount;
-                std::cout << "Ingrese la cantidad a retirar: ";
+                std::cout << "Enter the desired withdrawal amount: ";
                 std::cin >> withdrawAmount;
                 try {
                     customer.getBankAccount().withdraw(withdrawAmount);
-                    std::cout << "Retiro exitoso. Nuevo saldo: $" << customer.getBankAccount().getBalance() << "\n";
+                    std::cout << "Your withdrawal was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
                 } catch (const std::runtime_error& e) {
                     std::cerr << "Error: " << e.what() << "\n";
                 }
@@ -106,11 +106,11 @@ int main() {
             }
             case 3: {
                 double transferAmount;
-                std::cout << "Ingrese la cantidad a transferir a la cuenta de inversión: ";
+                std::cout << "Enter the amount you wish to transfer to the Investment Account: ";
                 std::cin >> transferAmount;
                 try {
                     customer.getInvestmentAccount().transferToInvestment(transferAmount);
-                    std::cout << "Transferencia exitosa. Nuevo saldo en cuenta de inversión: $" 
+                    std::cout << "Successful transfer. New Investment Account balance: $" 
                               << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
                 } catch (const std::runtime_error& e) {
                     std::cerr << "Error: " << e.what() << "\n";
@@ -119,27 +119,32 @@ int main() {
             }
             case 4: {
                 customer.getInvestmentAccount().applyGrowth();
-                std::cout << "Crecimiento aplicado. Nuevo saldo en cuenta de inversión: $" 
+                std::cout << "Growth Rate applied. New Investment Account balance: $" 
                           << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
                 break;
             }
             case 5: {
-                std::cout << "\n=== Detalles del cliente ===\n";
+                std::cout << "\n=== Client Information ===\n";
                 std::cout << "ID: " << customer.getCustomerID() << "\n";
-                std::cout << "Nombre: " << customer.getName() << "\n";
-                std::cout << "Teléfono: " << customer.getPhoneNumber() << "\n";
-                std::cout << "Saldo en cuenta principal: $" << customer.getBankAccount().getBalance() << "\n";
-                std::cout << "Saldo en cuenta de inversión: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
-                std::cout << "Tarjeta de crédito: " << customer.getCard().getCredit() << "\n";
-                std::cout << "Tarjeta de débito: " << customer.getCard().getDebit() << "\n";
+                std::cout << "Name: " << customer.getName() << "\n";
+                std::cout << "Phone number: " << customer.getPhoneNumber() << "\n";
+                std::cout << "Main account balance: $" << customer.getBankAccount().getBalance() << "\n";
+                std::cout << "Investment account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
+                std::cout << "Credit card: " << customer.getCard().getCredit() << "\n";
+                std::cout << "Debit card: " << customer.getCard().getDebit() << "\n";
                 break;
             }
             case 6:
-                std::cout << "Saliendo...\n";
+                std::cout << "Goodbye! Thank you for using our services.\n";
                 break;
             default:
-                std::cout << "Opción no válida. Intente de nuevo.\n";
+                std::cout << "Invalid option. Try again.\n";
         }
+
+        if (option != 6) {
+            std::cout << "\nBack to Task menu...\n";
+        }
+
     } while (option != 6);
 
     return 0;
