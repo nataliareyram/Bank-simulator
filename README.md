@@ -13,30 +13,38 @@ CLASS LIST:
 - Bank:
 -   -bankName: string
 -   -location: string
--   - customers: List<Customer>
--   + Bank(bankName: string, location: string)
-    + + getBankName(): string
-      + + setBankName(bankName: string): void 
+-   -customers: List<Customer>
+-   +Bank(bankName: string, location: string)
+-   +getBankName(): string
+-   +setBankName(bankName: string): void
+-   +getLocation(): string
+-   +setLocation(location: string): void
+-   +getCustomer(customerID: string): Customer
+-   +addCustomer(customer: Customer): void
+-   +removeCustomer(customerID: string): void
 
-+ getLocation(): string 
 
-+ setLocation(location: string): void 
+- Customer:
+-    -customerID: string
+-    -name: string
+-    -phoneNumber: int
+-    -bankAcc: BankAccount
+-    -investAcc: InvestmentAccount
+-    -cardType: Card
+-    + Customer(customerID: string, name: string, phoneNumber: int, bankAcc: BankAccount, investAcc: InvestmentAccount, cardType: Card)
+-    + getCustomerID(): string
+-    + setCustomerID(customerID: string): void
+-    + getName(): string
+-    + setName(name: string): void
+-    + getPhoneNumber(): int
+-    + setPhoneNumber(phoneNumber: int): void
+-    + getBankAccount(): BankAccount
+-    + setBankAccount(bankAcc: BankAccount): void
+-    + getInvestmentAccount(): InvestmentAccount
+-    + setInvestmentAccount(investAcc: InvestmentAccount): void
+-    + getCard(): Card
+-    + setCard(cardType: Card): void
 
-+ getCustomer(customerID: string): Customer 
-
-+ addCustomer(customer: Customer): void 
-
-+ removeCustomer(customerID: string): void
-- Customer
--    - name       
-     - customerID     
-     - age
-     + getName()       
-     + getCustomerID() 
-     + getAge()        
-     + setName()       
-     + setCustomerID() 
-     + setAge()
 - Bank Account
 -   - accountNumber       
     - balance             
