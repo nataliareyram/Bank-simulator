@@ -9,7 +9,7 @@ private:
     double growthRate;
 
 public:
-    InvestmentAccount(const std::string& accountNumber, double balance, const std::string& ownerName, const std::string& accountType, 
+    InvestmentAccount(std::string accountNumber, double balance, std::string ownerName, std::string accountType, 
                       double investmentBalance, double growthRate);
 
     double getInvestmentBalance() const;
@@ -23,4 +23,4 @@ public:
     void withdrawFromInvestment(double amount);
 };
 
-#endif // INVESTMENTACCOUNT_H
+#endif
