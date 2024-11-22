@@ -9,14 +9,13 @@ private:
     std::string debit;
 
 public:
-    Card(const std::string& creditCard, const std::string& debitCard);
+    Card(const std::string& credit, const std::string& debit);
 
     std::string getCredit() const;
-    std::string getDebit() const;
-    std::string getCardType() const;
+    void setCredit(const std::string& credit);
 
-    void setCredit(const std::string& creditCard);
-    void setDebit(const std::string& debitCard);
+    std::string getDebit() const;
+    void setDebit(const std::string& debit);
 };
 
 #endif // CARD_H
