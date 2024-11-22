@@ -4,7 +4,7 @@
 #include <string>
 
 class BankAccount {
-private:
+protected:
     std::string accountNumber;
     double balance;
     std::string ownerName;
