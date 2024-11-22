@@ -9,8 +9,9 @@
 
 ![Diagrama de clases](Diagrama.drawio.png)
 
+
 CLASS LIST:
-- Bank:
+- BANK:
 -   -bankName: string
 -   -location: string
 -   -customers: List<Customer>
@@ -24,57 +25,64 @@ CLASS LIST:
 -   +removeCustomer(customerID: string): void
 
 
-- Customer:
+- CUSTOMER:
 -    -customerID: string
 -    -name: string
 -    -phoneNumber: int
 -    -bankAcc: BankAccount
 -    -investAcc: InvestmentAccount
 -    -cardType: Card
--    + Customer(customerID: string, name: string, phoneNumber: int, bankAcc: BankAccount, investAcc: InvestmentAccount, cardType: Card)
--    + getCustomerID(): string
--    + setCustomerID(customerID: string): void
--    + getName(): string
--    + setName(name: string): void
--    + getPhoneNumber(): int
--    + setPhoneNumber(phoneNumber: int): void
--    + getBankAccount(): BankAccount
--    + setBankAccount(bankAcc: BankAccount): void
--    + getInvestmentAccount(): InvestmentAccount
--    + setInvestmentAccount(investAcc: InvestmentAccount): void
--    + getCard(): Card
--    + setCard(cardType: Card): void
+-    +Customer(customerID: string, name: string, phoneNumber: int, bankAcc: BankAccount, investAcc: InvestmentAccount, cardType: Card)
+-    +getCustomerID(): string
+-    +setCustomerID(customerID: string): void
+-    +getName(): string
+-    +setName(name: string): void
+-    +getPhoneNumber(): int
+-    +setPhoneNumber(phoneNumber: int): void
+-    +getBankAccount(): BankAccount
+-    +setBankAccount(bankAcc: BankAccount): void
+-    +getInvestmentAccount(): InvestmentAccount
+-    +setInvestmentAccount(investAcc: InvestmentAccount): void
+-    +getCard(): Card
+-    +setCard(cardType: Card): void
 
-- Bank Account
--   - accountNumber       
-    - balance             
-    - ownerName           
-    - accountType         
-    + getAccountNumber()  
-    + getBalance()        
-    + getOwnerName()      
-    + getAccountType()    
-    + deposit()           
-    + withdraw()          
-    + displayAccountInfo()
-- Investment Account
--   - mainBalance             
-    - investmentBalance       
-    - growthRate              
-    + getMainBalance()        
-    + getInvestmentBalance()  
-    + getGrowthRate()         
-    + applyGrowth()           
-    + transferToInvestment()  
-    + withdrawFromInvestment()
-    + displaySummary() 
-- Card
--    - credit   
-     - debit    
-     + getCredit() 
-     + getDebit()  
-     + getCardType()
-     + setCredit()  
-     + setDebit()           
-    
-     
+
+- BANK ACCOUNT
+-   #accountNumber: string
+-   #balance: double
+-   #ownerName: string
+-   #accountType: string
+-   +BankAccount(accountNumber: string, balance: double, ownerName: string, accountType: string, )
+-   +setAccountNumber(accountNumber: string): void
+-   +getAccountNumber(): string
+-   +setBalance(balance: double): void
+-   +getBalance(): double
+-   +setOwnerName(ownerName: string): void
+-   +getOwnerName(): string
+-   +setAccountType(accountType: string): void
+-   +getAccountType(): string
+-   +deposit(amount: double): void
+-   +withdraw(amount: double): void 
+
+
+- INVESTMENT ACCOUNT
+-   -investmentBalance: double
+-   -growthRate: double
+-   +InvestmentAccount(accountNumber: string, balance: double, ownerName: string, accountType: string, investmentBalance: double, growthRate: double)
+-   +getInvestmentBalance(): double
+-   +setInvestmentBalance(investmentBalance: double): void
+-   +getGrowthRate(): double
+-   +setGrowthRate(growthRate: double): void
+-   +applyGrowth(): void
+-   +transferToInvestment(amount: double): void
+-   +withdrawFromInvestment(amount: double): void
+
+
+- CARD
+-   -credit: string
+-   -debit: string
+-   +Card(credit: string, debit: string)
+-   +getCredit(): string
+-   +setCredit(credit: string): void
+-   +getDebit(): string
+-   +setDebit(debit: string): void
