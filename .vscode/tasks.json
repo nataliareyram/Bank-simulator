@@ -13,7 +13,7 @@
               "BankAccount.cpp",
               "Bank.cpp",
               "-o",
-              "main.exe"
+              "banksimulator.exe"
           ],
           "group": {
               "kind": "build",
