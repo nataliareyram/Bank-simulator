@@ -5,7 +5,7 @@
 #include "BankAccount.h"
 #include "InvestmentAccount.h"
 #include "Card.h"
-
+//Private attributes that belong to the class itself, as well as attributes of type composer that capture classes Customer has a composition relationship with.
 class Customer {
 private:
     std::string customerID;
@@ -14,11 +14,11 @@ private:
     BankAccount bankAcc;
     InvestmentAccount investAcc;
     Card cardType;
-
+//The constructor that assigns the data type to the corresponding attribute, as well as the attribute call and definition to the composed classes.
 public:
     Customer(std::string customerID, std::string name, int phoneNumber, 
              BankAccount bankAcc, InvestmentAccount investAcc, Card cardType);
-
+    //The paired getters and setters for each attribute.
     std::string getCustomerID() const;
     void setCustomerID(std::string customerID);
 
