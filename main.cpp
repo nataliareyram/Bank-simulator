@@ -6,11 +6,6 @@
 #include "BankAccount.h"
 #include "InvestmentAccount.h"
 #include "Card.h"
-#include "Bank.cpp"
-#include "Customer.cpp"
-#include "BankAccount.cpp"
-#include "InvestmentAccount.cpp"
-#include "Card.cpp"
 
 int main() {
     std::string bankName, location;
@@ -86,7 +81,9 @@ int main() {
     bank.addCustomer(customer);
 
     // Task menu
-    int option;
+    std::string option_str;
+    std::getline(std::cin, option_str);
+    int option= std::stoi(option_str);
     do {
         std::cout << "\n=== Task menu ===\n";
         std::cout << "1. Deposit to main account\n";
@@ -96,9 +93,8 @@ int main() {
         std::cout << "5. Get Client Information\n";
         std::cout << "6. Leave\n";
         std::cout << "Select an option: ";
-        std::string option_str;
-        std::getline(std::cin, option_str);
-        option = std::stoi(option_str);
+        std::getline(std::cin, option);
+
         switch (option) {
             case 1: {
                 double depositAmount;
@@ -168,8 +164,8 @@ int main() {
                 std::cout << "Invalid option. Please select a number between 1 and 6.\n";
                 break; 
         }
-            
-    }while (option >=1 & option <7);
-    return 0;
+            return 0;
+
+    }while (option >=1 & option <7)
 }
 //ola me quiero matar odio c++
