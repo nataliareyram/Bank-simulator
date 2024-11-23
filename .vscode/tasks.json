@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "1.95.3",
     "tasks": [
       {
         "label": "Compilar con MinGW",
