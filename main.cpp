@@ -24,7 +24,7 @@ int main() {
     std::getline(std::cin, customerID);
     std::cout << "Enter client's name: ";
     std::getline(std::cin, name);
-    std::cout << "Enter client's phone number: ";
+    std::cout << "Enter client's phone number (without the first 3 city digits ex. 442): ";
     std::getline(std::cin, phoneNumber);
 
     // Create bank account
@@ -119,7 +119,7 @@ int main() {
                 try {
                     customer.getBankAccount().withdraw(withdrawAmount);
                     std::cout << "Your withdrawal was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
-                } catch (const std::runtime_error& e) {
+                }catch (const std::runtime_error& e) {
                     std::cerr << "Error: " << e.what() << "\n";
                 }
                 break;
