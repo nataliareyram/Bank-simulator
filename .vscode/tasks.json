@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compilar con MinGW",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-o", "output.exe",
+          "main.cpp",
+          "Bank.cpp",
+          "Card.cpp",
+          "Customer.cpp",
+          "InvestmentAccount.cpp",
+          "-I.",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "silent"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+  
