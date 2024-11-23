@@ -81,7 +81,9 @@ int main() {
     bank.addCustomer(customer);
 
     // Task menu
-    int option;
+    std::string option_str;
+    std::getline(std::cin, option_str);
+    int option: std::stoi(option_str)
     do {
         std::cout << "\n=== Task menu ===\n";
         std::cout << "1. Deposit to main account\n";
@@ -93,76 +95,76 @@ int main() {
         std::cout << "Select an option: ";
         std::getline(std::cin, option);
 
-        while (option >=1 & option <7){
-            switch (option) {
-                case 1: {
-                    double depositAmount;
-                    std::cout << "Enter the desired deposit amount: ";
-                    while (!(std::cin >> depositAmount)) {
-                        std::cout << "Invalid input. Please enter a valid number: ";
-                        std::cin.clear();
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    }
-                    customer.getBankAccount().deposit(depositAmount);
-                    std::cout << "Your deposit was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
-                    break;
+        switch (option) {
+            case 1: {
+                double depositAmount;
+                std::cout << "Enter the desired deposit amount: ";
+                while (!(std::cin >> depositAmount)) {
+                    std::cout << "Invalid input. Please enter a valid number: ";
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
-                case 2: {
-                    double withdrawAmount;
-                    std::cout << "Enter the desired withdrawal amount: ";
-                    while (!(std::cin >> withdrawAmount)) {
-                        std::cout << "Invalid input. Please enter a valid number: ";
-                        std::cin.clear();
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    }
-                    try {
-                        customer.getBankAccount().withdraw(withdrawAmount);
-                        std::cout << "Your withdrawal was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
-                    } catch (const std::runtime_error& e) {
-                        std::cerr << "Error: " << e.what() << "\n";
-                    }
-                    break;
-                }
-                case 3: {
-                    double transferAmount;
-                    std::cout << "Enter the amount you wish to transfer to the Investment Account: ";
-                    while (!(std::cin >> transferAmount)) {
-                        std::cout << "Invalid input. Please enter a valid number: ";
-                        std::cin.clear();
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    }
-                    try {
-                        customer.getInvestmentAccount().transferToInvestment(transferAmount);
-                        std::cout << "Successful transfer. New Investment Account balance: $"
-                                << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
-                    } catch (const std::runtime_error& e) {
-                        std::cerr << "Error: " << e.what() << "\n";
-                    }
-                    break;
-                }
-                case 4: {
-                    customer.getInvestmentAccount().applyGrowth();
-                    std::cout << "Growth Rate applied. New Investment Account balance: $"
-                            << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
-                    break;
-                }
-                case 5: {
-                    std::cout << "\n=== Client Information ===\n";
-                    std::cout << "ID: " << customer.getCustomerID() << "\n";
-                    std::cout << "Name: " << customer.getName() << "\n";
-                    std::cout << "Phone number: " << customer.getPhoneNumber() << "\n";
-                    std::cout << "Main account balance: $" << customer.getBankAccount().getBalance() << "\n";
-                    std::cout << "Investment account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
-                    std::cout << "Credit card: " << customer.getCard().getCredit() << "\n";
-                    std::cout << "Debit card: " << customer.getCard().getDebit() << "\n";
-                    break;
-                }
-                case 6:
-                    std::cout << "Goodbye! Thank you for using our services.\n";
-                    break;
+                customer.getBankAccount().deposit(depositAmount);
+                std::cout << "Your deposit was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
+                break;
             }
-        }    
-        std::cout << "Invalid option. Please select a number between 1 and 6.\n";
-        continue;
-    return 0;
+            case 2: {
+                double withdrawAmount;
+                std::cout << "Enter the desired withdrawal amount: ";
+                while (!(std::cin >> withdrawAmount)) {
+                    std::cout << "Invalid input. Please enter a valid number: ";
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+                try {
+                    customer.getBankAccount().withdraw(withdrawAmount);
+                    std::cout << "Your withdrawal was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
+                } catch (const std::runtime_error& e) {
+                    std::cerr << "Error: " << e.what() << "\n";
+                }
+                break;
+            }
+            case 3: {
+                double transferAmount;
+                std::cout << "Enter the amount you wish to transfer to the Investment Account: ";
+                while (!(std::cin >> transferAmount)) {
+                    std::cout << "Invalid input. Please enter a valid number: ";
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+                try {
+                    customer.getInvestmentAccount().transferToInvestment(transferAmount);
+                    std::cout << "Successful transfer. New Investment Account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
+                } catch (const std::runtime_error& e) {
+                    std::cerr << "Error: " << e.what() << "\n";
+                }
+                break;
+            }
+            case 4: {
+                customer.getInvestmentAccount().applyGrowth();
+                std::cout << "Growth Rate applied. New Investment Account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
+                break;
+            }
+            case 5: {
+                std::cout << "\n=== Client Information ===\n";
+                std::cout << "ID: " << customer.getCustomerID() << "\n";
+                std::cout << "Name: " << customer.getName() << "\n";
+                std::cout << "Phone number: " << customer.getPhoneNumber() << "\n";
+                std::cout << "Main account balance: $" << customer.getBankAccount().getBalance() << "\n";
+                std::cout << "Investment account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
+                std::cout << "Credit card: " << customer.getCard().getCredit() << "\n";
+                std::cout << "Debit card: " << customer.getCard().getDebit() << "\n";
+                break;
+            }
+            case 6:
+                std::cout << "Goodbye! Thank you for using our services.\n";
+                break;
+
+            default:
+                std::cout << "Invalid option. Please select a number between 1 and 6.\n";
+                break; 
+        }
+            return 0;
+
+    }while (option >=1 & option <7)
 }
