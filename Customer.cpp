@@ -20,7 +20,7 @@ void Customer::setName(std::string name) {
     name = name;
 }
 
-std:.string Customer::getPhoneNumber() const {
+std::string Customer::getPhoneNumber() const {
     return phoneNumber;
 }
 
