@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include "Bank.h"
-#include "Customer.h"
-#include "BankAccount.h"
-#include "InvestmentAccount.h"
-#include "Card.h"
+using namespace std;
+#include "Bank.cpp"
+#include "Customer.cpp"
+#include "BankAccount.cpp"
+#include "InvestmentAccount.cpp"
+#include "Card.cpp"
 
 // Verifier function for string inputs
 void getValidatedString(const std::string& prompt, std::string& input) {
