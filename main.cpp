@@ -87,6 +87,7 @@ int main() {
 
     // Task menu
     int option;
+    std::string option_str;
     do {
         std::cout << "\n=== Task menu ===\n";
         std::cout << "1. Deposit to main account\n";
@@ -96,13 +97,14 @@ int main() {
         std::cout << "5. Get Client Information\n";
         std::cout << "6. Leave\n";
         std::cout << "Select an option: ";
-        std::string option_str;
+        
         std::getline(std::cin, option_str);
         option = std::stoi(option_str);
         switch (option) {
             case 1: {
                 double depositAmount;
                 std::cout << "Enter the desired deposit amount: ";
+                std::cin >> depositAmount;
                 while (!(std::cin >> depositAmount)) {
                     std::cout << "Invalid input. Please enter a valid number: ";
                     std::cin.clear();
@@ -110,7 +112,6 @@ int main() {
                 }
                 customer.getBankAccount().deposit(depositAmount);
                 std::cout << "Your deposit was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
-                break;
             }
             case 2: {
                 double withdrawAmount;
@@ -126,7 +127,6 @@ int main() {
                 }catch (const std::runtime_error& e) {
                     std::cerr << "Error: " << e.what() << "\n";
                 }
-                break;
             }
             case 3: {
                 double transferAmount;
@@ -142,12 +142,10 @@ int main() {
                 } catch (const std::runtime_error& e) {
                     std::cerr << "Error: " << e.what() << "\n";
                 }
-                break;
             }
             case 4: {
                 customer.getInvestmentAccount().applyGrowth();
                 std::cout << "Growth Rate applied. New Investment Account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
-                break;
             }
             case 5: {
                 std::cout << "\n=== Client Information ===\n";
@@ -158,18 +156,15 @@ int main() {
                 std::cout << "Investment account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
                 std::cout << "Credit card: " << customer.getCard().getCredit() << "\n";
                 std::cout << "Debit card: " << customer.getCard().getDebit() << "\n";
-                break;
             }
             case 6:
                 std::cout << "Goodbye! Thank you for using our services.\n";
-                break;
 
             default:
                 std::cout << "Invalid option. Please select a number between 1 and 6.\n";
-                break; 
         }
             
+
     }while (option >=1 & option <7);
     return 0;
 }
-//ola me quiero matar odio c++
