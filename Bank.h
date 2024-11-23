@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "Customer.h"
-
+//Private attributes along with their data tyoes
 class Bank {
 private:
     std::string bankName;
