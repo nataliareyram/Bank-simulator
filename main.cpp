@@ -91,15 +91,10 @@ int main() {
         std::cout << "5. Get Client Information\n";
         std::cout << "6. Leave\n";
         std::cout << "Select an option: ";
-        
-        // Validate option range
-        if (option < 1 || option > 6) {
-            std::cout << "Invalid option. Please select a number between 1 and 6.\n";
-            continue;
-        }
+        std::getline(std::cin, option);
 
-        switch (option) {
-            case 1: {
+        while (option >=1 & option <7){
+            if (option == 1) {
                 double depositAmount;
                 std::cout << "Enter the desired deposit amount: ";
                 while (!(std::cin >> depositAmount)) {
@@ -110,8 +105,7 @@ int main() {
                 customer.getBankAccount().deposit(depositAmount);
                 std::cout << "Your deposit was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
                 break;
-            }
-            case 2: {
+            }else if (option == 2) {
                 double withdrawAmount;
                 std::cout << "Enter the desired withdrawal amount: ";
                 while (!(std::cin >> withdrawAmount)) {
@@ -123,11 +117,10 @@ int main() {
                     customer.getBankAccount().withdraw(withdrawAmount);
                     std::cout << "Your withdrawal was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
                 } catch (const std::runtime_error& e) {
-                    std::cerr << "Error: " << e.what() << "\n";
+                        std::cerr << "Error: " << e.what() << "\n";
                 }
                 break;
-            }
-            case 3: {
+            }else if (option == 3) {
                 double transferAmount;
                 std::cout << "Enter the amount you wish to transfer to the Investment Account: ";
                 while (!(std::cin >> transferAmount)) {
@@ -137,20 +130,17 @@ int main() {
                 }
                 try {
                     customer.getInvestmentAccount().transferToInvestment(transferAmount);
-                    std::cout << "Successful transfer. New Investment Account balance: $"
-                              << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
+                    std::cout << "Successful transfer. New Investment Account balance: $"<< customer.getInvestmentAccount().getInvestmentBalance() << "\n";
                 } catch (const std::runtime_error& e) {
                     std::cerr << "Error: " << e.what() << "\n";
                 }
                 break;
             }
-            case 4: {
+            else if (option == 4) {
                 customer.getInvestmentAccount().applyGrowth();
-                std::cout << "Growth Rate applied. New Investment Account balance: $"
-                          << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
+                std::cout << "Growth Rate applied. New Investment Account balance: $"<< customer.getInvestmentAccount().getInvestmentBalance() << "\n";
                 break;
-            }
-            case 5: {
+            }else if (option == 5) {
                 std::cout << "\n=== Client Information ===\n";
                 std::cout << "ID: " << customer.getCustomerID() << "\n";
                 std::cout << "Name: " << customer.getName() << "\n";
@@ -160,12 +150,13 @@ int main() {
                 std::cout << "Credit card: " << customer.getCard().getCredit() << "\n";
                 std::cout << "Debit card: " << customer.getCard().getDebit() << "\n";
                 break;
-            }
-            case 6:
+            }else if (option == 6) {
                 std::cout << "Goodbye! Thank you for using our services.\n";
                 break;
-        }
-    } while (option != 6);
-
+            }
+        }    
+        std::cout << "Invalid option. Please select a number between 1 and 6.\n";
+        continue;
     return 0;
+    }
 }
