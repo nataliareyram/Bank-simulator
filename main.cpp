@@ -168,3 +168,4 @@ int main() {
 
     }while (option >=1 & option <7)
 }
+//ola me quiero matar odio c++
