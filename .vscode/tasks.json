@@ -1,26 +1,24 @@
 {
   "version": "2.0.0",
   "tasks": [
-    {
-      "label": "Build Project",
-      "type": "shell",
-      "command": "g++",
-      "args": [
-        "-std=c++17",
-        "main.cpp",
-        "Bank.cpp",
-        "BankAccount.cpp",
-        "Card.cpp",
-        "Customer.cpp",
-        "InvestmentAccount.cpp",
-        "-o",
-        "BankSimulator.exe"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": []
-    }
+      {
+          "label": "Build Project",
+          "type": "shell",
+          "command": "g++",
+          "args": [
+              "main.cpp",
+              "InvestmentAccount.cpp",
+              "Customer.cpp",
+              "Card.cpp",
+              "BankAccount.cpp",
+              "Bank.cpp",
+              "-o",
+              "main.exe"
+          ],
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          }
+      }
   ]
 }
