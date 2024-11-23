@@ -10,13 +10,13 @@ class Customer {
 private:
     std::string customerID;
     std::string name;
-    int phoneNumber;
+    std::string phoneNumber;
     BankAccount bankAcc;
     InvestmentAccount investAcc;
     Card cardType;
 //The constructor that assigns the data type to the corresponding attribute, as well as the attribute call and definition to the composed classes.
 public:
-    Customer(std::string customerID, std::string name, int phoneNumber, 
+    Customer(std::string customerID, std::string name, std::string phoneNumber, 
              BankAccount bankAcc, InvestmentAccount investAcc, Card cardType);
     //The paired getters and setters for each attribute.
     std::string getCustomerID() const;
@@ -25,8 +25,8 @@ public:
     std::string getName() const;
     void setName(std::string name);
 
-    int getPhoneNumber() const;
-    void setPhoneNumber(int phoneNumber);
+    std::string getPhoneNumber() const;
+    void setPhoneNumber(std::string phoneNumber);
 
     BankAccount getBankAccount() const;
     void setBankAccount(BankAccount bankAcc);
