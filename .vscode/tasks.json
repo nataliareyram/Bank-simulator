@@ -6,7 +6,7 @@
         "type": "shell",
         "command": "g++",
         "args": [
-          "-o", "output.exe",
+          "-o", "BankSimulator.exe",
           "main.cpp",
           "Bank.cpp",
           "Card.cpp",
