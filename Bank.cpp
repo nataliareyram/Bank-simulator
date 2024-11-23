@@ -1,10 +1,10 @@
 #include "Bank.h"
 #include <algorithm>
 #include <stdexcept>
-
+//Main class constructor that gathers the corresponding attributes and methods along with their data type.
 Bank::Bank(std::string bankName, std::string location) 
     : bankName(bankName), location(location) {}
-
+//Getters and setters are paired in order to have an organized view of the methods and their return values.
 std::string Bank::getBankName() const {
     return bankName;
 }
