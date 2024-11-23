@@ -83,7 +83,7 @@ int main() {
     // Task menu
     std::string option_str;
     std::getline(std::cin, option_str);
-    int option: std::stoi(option_str);
+    int option= std::stoi(option_str);
     do {
         std::cout << "\n=== Task menu ===\n";
         std::cout << "1. Deposit to main account\n";
