@@ -1,9 +1,9 @@
 #include "Customer.h"
-
+//The constructor places the attributes defined by their data type along with the attribute of type component that are initialized for further use and definition.
 Customer::Customer(std::string customerID, std::string name, int phoneNumber, 
                    BankAccount bankAcc, InvestmentAccount investAcc, Card cardType)
     : customerID(customerID), name(name), phoneNumber(phoneNumber), bankAcc(bankAcc), investAcc(investAcc), cardType(cardType) {}
-
+//Paired getters and setters for each attribute to facilitate an organized view of the methods and their return values.
 std::string Customer::getCustomerID() const {
     return customerID;
 }
@@ -27,7 +27,7 @@ int Customer::getPhoneNumber() const {
 void Customer::setPhoneNumber(int phoneNumber) {
     phoneNumber = phoneNumber;
 }
-
+//The following methods include getters and setters that initialize the composition relationships the Customer class has with other 3 classes as a mention of characteristics the class possesses.
 BankAccount Customer::getBankAccount() const {
     return bankAcc;
 }
