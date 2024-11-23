@@ -105,15 +105,24 @@ int main() {
         std::cout << "5. View Client Information\n";
         std::cout << "6. Exit\n";
         std::cout << "Enter your choice: ";
+        
         std::cin >> option;
 
+        // Validate input
+        if (std::cin.fail()) {
+            std::cin.clear(); // Clear error state
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
+            std::cout << "Invalid input. Please enter a valid number.\n";
+            option = -1; // Force invalid option to show message
+        }
+
+        // Handle menu options
         if (option == 1) {
             double depositAmount;
             getValidatedDouble("Enter the desired deposit amount: ", depositAmount);
             customer.getBankAccount().deposit(depositAmount);
             std::cout << "Your deposit was successful. New balance: $" << customer.getBankAccount().getBalance() << "\n";
-        } 
-        else if (option == 2) {
+        } else if (option == 2) {
             double withdrawAmount;
             getValidatedDouble("Enter the desired withdrawal amount: ", withdrawAmount);
             try {
@@ -122,8 +131,7 @@ int main() {
             } catch (const std::runtime_error& e) {
                 std::cerr << "Error: " << e.what() << "\n";
             }
-        } 
-        else if (option == 3) {
+        } else if (option == 3) {
             double transferAmount;
             getValidatedDouble("Enter the amount you wish to transfer to the Investment Account: ", transferAmount);
             try {
@@ -133,13 +141,11 @@ int main() {
             } catch (const std::runtime_error& e) {
                 std::cerr << "Error: " << e.what() << "\n";
             }
-        } 
-        else if (option == 4) {
+        } else if (option == 4) {
             customer.getInvestmentAccount().applyGrowth();
             std::cout << "Growth Rate applied. New Investment Account balance: $"
                       << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
-        } 
-        else if (option == 5) {
+        } else if (option == 5) {
             std::cout << "\n=== Client Information ===\n";
             std::cout << "ID: " << customer.getCustomerID() << "\n";
             std::cout << "Name: " << customer.getName() << "\n";
@@ -148,11 +154,9 @@ int main() {
             std::cout << "Investment account balance: $" << customer.getInvestmentAccount().getInvestmentBalance() << "\n";
             std::cout << "Credit card: " << customer.getCard().getCredit() << "\n";
             std::cout << "Debit card: " << customer.getCard().getDebit() << "\n";
-        } 
-        else if (option == 6) {
+        } else if (option == 6) {
             std::cout << "Goodbye! Thank you for using our services.\n";
-        } 
-        else {
+        } else {
             std::cout << "Invalid option. Please try again.\n";
         }
     } while (option != 6);
