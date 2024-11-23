@@ -22,7 +22,7 @@ void Bank::setLocation(std::string location) {
 }
 
 Customer Bank::getCustomer(std::string customerID) const {
-    for (const auto customer : customers) {
+    for (const auto& customer : customers) {
         if (customer.getCustomerID() == customerID) {
             return customer;
         }
@@ -36,7 +36,7 @@ void Bank::addCustomer(Customer customer) {
 
 void Bank::removeCustomer(std::string customerID) {
     customers.erase(std::remove_if(customers.begin(), customers.end(), 
-        [customerID](Customer c) {
+        [&customerID](Customer& c) {
             return c.getCustomerID() == customerID;
         }), customers.end());
 }
